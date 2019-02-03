@@ -104,7 +104,9 @@ void columnSwap(int **array, int col1, int col2, int numberOfRows, int numberOfC
 /// Params: middleElementsAmount - amount of elements in the middle of array
 ///         you want to add to compare them
 void sortArrayByMiddleElementsSum(int *array[], int numberOfRows, int numberOfColumns, int middleElementsAmount) {
-    const int startIndexForSum = numberOfRows - middleElementsAmount - 1;
+    int k = numberOfRows - middleElementsAmount;
+    if(k == 0) { k = 1; }
+    const int startIndexForSum = (numberOfRows / 2)/(k);
     const int endIndexForSum = startIndexForSum + middleElementsAmount - 1;
     
     int *sums = (int*)malloc(numberOfColumns * sizeof(int));
@@ -144,7 +146,7 @@ void sortArrayByMiddleElementsSum(int *array[], int numberOfRows, int numberOfCo
 
 int main(int argc, const char * argv[]) {
     
-    const int middleElementsAmount = 2;
+    const int middleElementsAmount = 3;
     int numberOfRows, numberOfColumns;
     int **array;
     
